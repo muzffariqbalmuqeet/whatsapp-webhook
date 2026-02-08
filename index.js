@@ -3,10 +3,12 @@ const app = express();
 
 app.use(express.json());
 
+// Root test
 app.get("/", (req, res) => {
   res.send("Server is running");
 });
 
+// Webhook verification
 app.get("/webhook", (req, res) => {
   const mode = req.query["hub.mode"];
   const token = req.query["hub.verify_token"];
@@ -15,6 +17,7 @@ app.get("/webhook", (req, res) => {
   if (mode === "subscribe" && token === "meta_whatsapp_verify") {
     return res.status(200).send(challenge);
   }
+
   return res.sendStatus(403);
 });
 

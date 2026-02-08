@@ -5,7 +5,8 @@ const app = express();
 app.use(bodyParser.json());
 
 // 🔐 Verify Token (same token Meta me use hoga)
-const VERIFY_TOKEN = "my_verify_token_123";
+const VERIFY_TOKEN = "meta_whatsapp_verify";
+
 
 // 1️⃣ Webhook verification
 app.get("/webhook", (req, res) => {
